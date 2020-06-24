@@ -2,6 +2,24 @@
 // Start the session
 
 // Include questions from the questions.php file
+include('inc/questions.php');
+
+$index = 2;
+
+$question = $questions[$index];
+
+$answers = [
+    $question["correctAnswer"], 
+    $question["firstIncorrectAnswer"], 
+    $question["secondIncorrectAnswer"]
+];
+
+shuffle($answers);
+
+
+
+
+
 
 // Make a variable to hold the total number of questions to ask
 
