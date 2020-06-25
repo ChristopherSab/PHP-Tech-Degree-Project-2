@@ -4,7 +4,9 @@
 // Include questions from the questions.php file
 include('inc/questions.php');
 
-$index = 2;
+$totalQuestions = count($questions);
+
+$index = rand(0, $totalQuestions - 1);
 
 $question = $questions[$index];
 
@@ -15,6 +17,18 @@ $answers = [
 ];
 
 shuffle($answers);
+
+$toast = null;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  if ($_POST["answer"] == $questions[$index]["correctAnswer"]) {
+    $toast = 'Well Done! Great Job!';
+  } else {
+    $toast = 'Bummer! Sorry That Was Wrong';
+  }
+}
+
 
 
 

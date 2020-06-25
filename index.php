@@ -16,14 +16,19 @@
     <div class="container">
         <div id="quiz-box">
 
+
         <?php 
         include('inc/quiz.php'); 
 
-            echo '<p class="breadcrumbs">Question # of #</p>';
+            if(!empty($toast)){
+                echo '<p>'.$toast.'</p>';
+            }
+
+            echo '<p class="breadcrumbs">Question # of  '.$totalQuestions.'</p>';
             echo '<p class="quiz">What is '. $question['leftAdder'] .'+'.  $question['rightAdder']. '?</p>'; 
 
-            echo  '<form method="post" action="index.php">
-                    <input type="hidden" name="id" value="'.$index.'"/>
+            echo '<form method="post" action="index.php">
+                  <input type="hidden" name="id" value="'.$index.'"/>
                     <input type="submit" class="btn" name="answer" value="'.$answers[0].'" />
                     <input type="submit" class="btn" name="answer" value="'.$answers[1].'" />
                     <input type="submit" class="btn" name="answer" value="'.$answers[2].'" />
