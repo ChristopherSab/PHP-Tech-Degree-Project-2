@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $questions[] =
     [
         "leftAdder" => 3,

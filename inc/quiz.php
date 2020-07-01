@@ -1,15 +1,22 @@
 <?php
 // Start the session
 
-// Include questions from the questions.php file
+// Include of thee questions from the questions.php file
 include('inc/questions.php');
 
+// Total number of questions to ask
 $totalQuestions = count($questions);
 
+// Toast message which is displayed to the page after a user chooses answer, set to empty by default
+$toast = null;
+
+// Make a variable to hold a random index.
 $index = rand(0, $totalQuestions - 1);
 
+// Current question position
 $question = $questions[$index];
 
+//Array of the 3 answers (this is from the question.php file)
 $answers = [
     $question["correctAnswer"], 
     $question["firstIncorrectAnswer"], 
@@ -18,43 +25,31 @@ $answers = [
 
 shuffle($answers);
 
-$toast = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($_POST["answer"] == $questions[$index]["correctAnswer"]) {
     $toast = 'Well Done! Great Job!';
+    $_SESSION['totalCorrect'] ++;
   } else {
     $toast = 'Bummer! Sorry That Was Wrong';
   }
 }
 
+if(!isset($_SESSION['used_indexes'])){
+  $_SESSION['used_indexes'] = [];
+  $showScore = false;
+}
+
+array_push($_SESSION['used_indexes'], $index);
+
+$_SESSION['totalCorrect'] = 0;
 
 
 
 
 
 
-// Make a variable to hold the total number of questions to ask
-
-// Make a variable to hold the toast message and set it to an empty string
-
-// Make a variable to determine if the score will be shown or not. Set it to false.
-
-// Make a variable to hold a random index. Assign null to it.
-
-// Make a variable to hold the current question. Assign null to it.
-
-
-/*
-    If the server request was of type POST
-        Check if the user's answer was equal to the correct answer.
-        If it was correct:
-            1. Assign a congratulutory string to the toast variable
-            2. Ancrement the session variable that holds the total number correct by one.
-        Otherwise:
-            1. Assign a bummer message to the toast variable.
-*/
 
 /*
     Check if a session variable has ever been set/created to hold the indexes of questions already asked.

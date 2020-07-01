@@ -18,13 +18,9 @@
 
 
         <?php 
-        include('inc/quiz.php'); 
+            include('inc/quiz.php'); 
 
-            if(!empty($toast)){
-                echo '<p>'.$toast.'</p>';
-            }
-
-            echo '<p class="breadcrumbs">Question # of  '.$totalQuestions.'</p>';
+            echo '<p class="breadcrumbs">Question '.count($_SESSION['used_indexes']).' of  '.$totalQuestions.'</p>';
             echo '<p class="quiz">What is '. $question['leftAdder'] .'+'.  $question['rightAdder']. '?</p>'; 
 
             echo '<form method="post" action="index.php">
@@ -33,6 +29,10 @@
                     <input type="submit" class="btn" name="answer" value="'.$answers[1].'" />
                     <input type="submit" class="btn" name="answer" value="'.$answers[2].'" />
                     </form>';
+
+            if(!empty($toast)){
+                echo '<p>'.$toast.'</p>';
+            }
 
         ?>
 
