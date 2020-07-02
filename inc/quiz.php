@@ -28,8 +28,6 @@ if(!isset($_SESSION['used_indexes'])){
 }
 
 
-
-
 $_SESSION['totalCorrect'] = 0;
 
 if(count($_SESSION['used_indexes']) == $totalQuestions){
