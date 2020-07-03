@@ -20,7 +20,6 @@
         <?php 
             include('inc/quiz.php'); 
 
-            var_dump($_SESSION['used_indexes']);
 
             if(!empty($toast)){
                 echo '<p>'.$toast.'</p>';

@@ -9,26 +9,27 @@ $totalQuestions = count($questions);
 // Toast message which is displayed to the page after a user chooses answer, set to empty by default
 $toast = null;
 
-// Make a variable to hold a random index.
+// Variable to holds a random index index number.
 $index = rand(0, $totalQuestions - 1);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+
   if ($_POST["answer"] == $questions[$index]["correctAnswer"]) {
     $toast = 'Well Done! Great Job!';
-    $_SESSION['totalCorrect'] + 1;
+    $_SESSION['totalCorrect'] += 1;
   } else {
     $toast = 'Bummer! Sorry That Was Wrong';
-  }
+  
+}
+
 }
 
 if(!isset($_SESSION['used_indexes'])){
   $_SESSION['used_indexes'] = [];
 }
 
-
-$_SESSION['totalCorrect'] = 0;
 
 if(count($_SESSION['used_indexes']) == $totalQuestions){
   $_SESSION['used_indexes'] = [];
@@ -54,5 +55,4 @@ shuffle($answers);
 
 }
 
-
-  // session_destroy();
+//  session_destroy();
