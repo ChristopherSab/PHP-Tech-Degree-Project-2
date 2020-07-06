@@ -60,4 +60,4 @@ shuffle($answers);
 
 }
 
-  session_destroy();
+ // session_destroy();
