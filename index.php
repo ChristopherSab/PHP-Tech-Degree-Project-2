@@ -21,7 +21,6 @@
                 echo $toast;
             }
 
-
             if($show_score == true){
                 echo '<h1 id="final-score"> You Got '.$_SESSION['totalCorrect'].' Out Of '.$totalQuestions. ' Questions Correct'.'</h1>';
                 echo ' <form method="get" action="">
@@ -39,6 +38,11 @@
                   <input type="submit" class="btn" name="answer" value="'.$answers[2].'" />
                   </form>';
             }
+
+        ?>
+        <?php
+        
+           //echo $totalQuestions;
 
         ?>
 
