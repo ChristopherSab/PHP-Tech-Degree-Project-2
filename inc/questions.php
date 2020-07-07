@@ -14,7 +14,8 @@ function getRandomQuestion(){
         $questions[$i]['secondIncorrectAnswer'] = 10;
 
         #Although statistically unlikely, These conditionals will make sure the CORRECT answer Is NOT equal to the 
-        #Randomly assigned INCORRECT answers, therefore avoiding more than 1 correct answer being displayed
+        #Randomly assigned INCORRECT answers, therefore avoiding more than 1 correct answer being displayed OR two 
+        #similar INCORRECT answers
 
         do{
 

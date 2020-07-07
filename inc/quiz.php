@@ -16,13 +16,13 @@ $toast = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  //Checks to see if the answer selected is the correct answer in the questions array & displays relevant message
+//Checks to see if the answer selected is the correct answer in the questions array & displays relevant message
  if ($_POST['answer'] == $_SESSION["questions"][$_POST['id']]["correctAnswer"]){
     $toast = "<h2 class='correct'> Correct Answer, Well Done! &#9786 </h2>";
     $_SESSION['totalCorrect'] += 1;
   } else {
     $toast = "<h2 class='wrong'> Sorry! That Was Wrong! &#9785 </h2>"; 
-}
+  }
 
 }
 

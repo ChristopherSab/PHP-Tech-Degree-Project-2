@@ -1,8 +1,6 @@
-
 <?php
     include('inc/quiz.php'); 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,10 +36,6 @@
                   <input type="submit" class="btn" name="answer" value="'.$answers[2].'" />
                   </form>';
             }
-
-        ?>
-
-        <?php
 
         ?>
 
