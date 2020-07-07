@@ -1,7 +1,7 @@
 <?php
 
-
-
+#This Functions Creates multi-dimensional array of 10 addition math questions,
+#Each array, has an inner array of the numbers being addded, the correct answer && two incorrect answers 
 function getRandomQuestion(){
 
     $questions = array();
@@ -11,8 +11,9 @@ function getRandomQuestion(){
         $questions[$i]['rightAdder'] = rand(10, 100);
         $questions[$i]['correctAnswer'] = $questions[$i]['leftAdder'] + $questions[$i]['rightAdder'];
         $questions[$i]['firstIncorrectAnswer'] = null;
-        $questions[$i]['secondIncorrectAnswer'] = $questions[$i]['correctAnswer'] - rand(3, 11);
+        $questions[$i]['secondIncorrectAnswer'] = null;
 
+        #These conditionals will 
         if($questions[$i]['correctAnswer'] !== $questions[$i]['firstIncorrectAnswer'] ){
             $questions[$i]['firstIncorrectAnswer'] = rand(10, 200);
         }else {
