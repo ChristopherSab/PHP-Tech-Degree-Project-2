@@ -31,18 +31,24 @@ if(!isset($_SESSION['used_indexes'])){
   $_SESSION['totalCorrect'] = 0;
 }
 
-
+#Once the number of indexes saved to the sessions are EQual to the number of questions
+#This triggers the end of the quiz, 
 if(count($_SESSION['used_indexes']) == $totalQuestions){
   $_SESSION['used_indexes'] = [];
   $show_score = true;
 } else {
   $show_score = false;
+    #When there aren't any "indexes" saved in the Array,
+    #it generates a set of "10 new Questions & answers" to display and resets the score
     if(count($_SESSION['used_indexes']) == 0){
       $_SESSION["questions"] = getRandomQuestion();
       $_SESSION['totalCorrect'] = 0;
       $toast = '';
     }
 
+    #To ensure the same indexes are not displayed
+    #This loop assigns a number to the index whilst the index is already
+    #in the list of used_indexes.
     do{
       $index = rand(0, $totalQuestions - 1);
     }while(in_array($index, $_SESSION['used_indexes']));
@@ -61,7 +67,6 @@ shuffle($answers);
 
 }
 
-//  session_destroy();
 
 
 

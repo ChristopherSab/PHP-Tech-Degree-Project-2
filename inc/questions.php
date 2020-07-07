@@ -1,6 +1,6 @@
 <?php
 
-#This Functions Creates multi-dimensional array of 10 addition math questions,
+#This Functions returns a multi-dimensional array of 10 addition math questions,
 #Each array, has an inner array of the numbers being addded, the correct answer && two incorrect answers 
 function getRandomQuestion(){
 
@@ -10,23 +10,26 @@ function getRandomQuestion(){
         $questions[$i]['leftAdder'] = rand(10, 100);
         $questions[$i]['rightAdder'] = rand(10, 100);
         $questions[$i]['correctAnswer'] = $questions[$i]['leftAdder'] + $questions[$i]['rightAdder'];
-        $questions[$i]['firstIncorrectAnswer'] = null;
-        $questions[$i]['secondIncorrectAnswer'] = null;
+        $questions[$i]['firstIncorrectAnswer'] = 10;
+        $questions[$i]['secondIncorrectAnswer'] = 10;
 
-        #These conditionals will 
-        if($questions[$i]['correctAnswer'] !== $questions[$i]['firstIncorrectAnswer'] ){
-            $questions[$i]['firstIncorrectAnswer'] = rand(10, 200);
-        }else {
-            $questions[$i]['firstIncorrectAnswer'] = $questions[$i]['correctAnswer'] + rand(3, 19);
-        }
+        #Although statistically unlikely, These conditionals will make sure the CORRECT answer Is NOT equal to the 
+        #Randomly assigned INCORRECT answers, therefore avoiding more than 1 correct answer being displayed
 
-        if($questions[$i]['correctAnswer'] !== $questions[$i]['secondIncorrectAnswer'] ){
-            $questions[$i]['secondIncorrectAnswer'] = rand(10, 200);
-        }else {
-            $questions[$i]['secondIncorrectAnswer'] = $questions[$i]['correctAnswer'] + rand(3, 19);
-        }
+        do{
+
+            $questions[$i]['firstIncorrectAnswer'] = $questions[$i]['correctAnswer'] + rand(-10, 10);
+
+        }while($questions[$i]['correctAnswer'] == $questions[$i]['firstIncorrectAnswer']);
+
+        do{
+
+            $questions[$i]['secondIncorrectAnswer'] = $questions[$i]['firstIncorrectAnswer'] - rand(-10, 10);
+
+        }while($questions[$i]['correctAnswer'] == $questions[$i]['secondIncorrectAnswer'] OR 
+        $questions[$i]['secondIncorrectAnswer'] == $questions[$i]['firstIncorrectAnswer'] );
+
     }
-
 
     return $questions;
 }
