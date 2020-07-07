@@ -6,27 +6,25 @@ session_start();
 include('inc/questions.php');
 
 //An array of 10 random questions is saved to the Session
-$_SESSION["questions"] = getRandomQuestion();
+//$_SESSION["questions"] = getRandomQuestion();
 
 
 // Determines if the score will be shown or not. Set to false by default
 $show_score = False;
 
 // Total number of questions to ask
-$totalQuestions = count($_SESSION["questions"]);
+$totalQuestions = count(getRandomQuestion());
 
 // Toast message which is displayed to the page after a user chooses answer, set to empty by default
 $toast = null;
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  if ($_POST['answer'] == $_SESSION["questions"][$_POST['id']]["correctAnswer"]){
+ if ($_POST['answer'] == $_SESSION["questions"][$_POST['id']]["correctAnswer"]){
     $toast = "<h2 class='correct'> Correct Answer, Well Done! &#9786 </h2>";
     $_SESSION['totalCorrect'] += 1;
   } else {
-    $toast = "<h2 class='wrong'> Sorry! That Was Wrong! &#9785 </h2>";
-    
+    $toast = "<h2 class='wrong'> Sorry! That Was Wrong! &#9785 </h2>"; 
 }
 
 }
@@ -43,6 +41,7 @@ if(count($_SESSION['used_indexes']) == $totalQuestions){
 } else {
   $show_score = false;
     if(count($_SESSION['used_indexes']) == 0){
+      $_SESSION["questions"] = getRandomQuestion();
       $_SESSION['totalCorrect'] = 0;
       $toast = '';
     }
